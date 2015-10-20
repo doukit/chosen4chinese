@@ -31,17 +31,14 @@ arrangePinYin = (arr) ->
   arrResult = [""]
   for cha in arr
     if cha.length == 1
-      i = 0
-      for arrAtI in arrResult
-        arrResult[i++] = arrAtI + cha;
+      for arrAtI,i in arrResult
+        arrResult[i] = arrAtI + cha;
     else
       tmpArr = arrResult.slice(0);
       arrResult = [];
       for chaI in cha
         tmp = tmpArr.slice(0)
-        j = 0
-        for tmpI in tmp
-          tmp[j++] = tmpI + chaI
+        for tmpI,j in tmp
+          tmp[j] = tmpI + chaI
         arrResult = arrResult.concat(tmp)
-
   return arrResult

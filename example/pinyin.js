@@ -411,10 +411,9 @@ arrangePinYin = function(arr) {
   for (k = 0, len = arr.length; k < len; k++) {
     cha = arr[k];
     if (cha.length === 1) {
-      i = 0;
-      for (l = 0, len1 = arrResult.length; l < len1; l++) {
-        arrAtI = arrResult[l];
-        arrResult[i++] = arrAtI + cha;
+      for (i = l = 0, len1 = arrResult.length; l < len1; i = ++l) {
+        arrAtI = arrResult[i];
+        arrResult[i] = arrAtI + cha;
       }
     } else {
       tmpArr = arrResult.slice(0);
@@ -422,10 +421,9 @@ arrangePinYin = function(arr) {
       for (m = 0, len2 = cha.length; m < len2; m++) {
         chaI = cha[m];
         tmp = tmpArr.slice(0);
-        j = 0;
-        for (n = 0, len3 = tmp.length; n < len3; n++) {
-          tmpI = tmp[n];
-          tmp[j++] = tmpI + chaI;
+        for (j = n = 0, len3 = tmp.length; n < len3; j = ++n) {
+          tmpI = tmp[j];
+          tmp[j] = tmpI + chaI;
         }
         arrResult = arrResult.concat(tmp);
       }
