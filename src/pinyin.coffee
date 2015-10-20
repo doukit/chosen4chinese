@@ -42,3 +42,9 @@ arrangePinYin = (arr) ->
           tmp[j] = tmpI + chaI
         arrResult = arrResult.concat(tmp)
   return arrResult
+
+# 判断是否含有中文
+isContainsChineseCharacter = (str) ->
+  for char in str
+    return true if char != getFirstChinesePinYinSymbol(char)
+  return false
