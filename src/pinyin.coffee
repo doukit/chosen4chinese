@@ -45,6 +45,6 @@ arrangePinYin = (arr) ->
 
 # 判断是否含有中文
 isContainsChineseCharacter = (str) ->
-  for char in str
-    return true if char != getFirstChinesePinYinSymbol(char)
+  for char,j in str
+    return true if str.charAt(j) != getFirstChinesePinYinSymbol(str.charAt(j))
   return false

@@ -433,10 +433,10 @@ arrangePinYin = function(arr) {
 };
 
 isContainsChineseCharacter = function(str) {
-  var char, k, len;
-  for (k = 0, len = str.length; k < len; k++) {
-    char = str[k];
-    if (char !== getFirstChinesePinYinSymbol(char)) {
+  var char, j, k, len;
+  for (j = k = 0, len = str.length; k < len; j = ++k) {
+    char = str[j];
+    if (str.charAt(j) !== getFirstChinesePinYinSymbol(str.charAt(j))) {
       return true;
     }
   }
