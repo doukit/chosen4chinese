@@ -7,10 +7,10 @@ multiPinYinCharacter={"19969":"DZ","19975":"WM","19988":"QJ","20048":"YL","20056
 
 # 参数,中文字符串
 # 返回值:拼音首字母串数组
-getChineseFirstPinYin: (chinese) ->
+getChineseFirstPinYin = (chinese) ->
   chinese
 
-getFirstChinesePinYinSymbol: (ch) ->
+getFirstChinesePinYinSymbol = (ch) ->
   uni = ch.charCodeAt(0)
   if uni > 40869 or uni < 19968
     uni
