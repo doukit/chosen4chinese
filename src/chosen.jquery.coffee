@@ -2,8 +2,8 @@ $ = jQuery
 
 $.fn.extend({
   chosen: (options) ->
-    # Do no harm and return as soon as possible for unsupported browsers, namely IE6 and IE7
-    # Continue on if running IE document type but in compatibility mode
+# Do no harm and return as soon as possible for unsupported browsers, namely IE6 and IE7
+# Continue on if running IE document type but in compatibility mode
     return this unless AbstractChosen.browser_is_supported()
     this.each (input_field) ->
       $this = $ this
