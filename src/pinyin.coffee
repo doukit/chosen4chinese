@@ -22,7 +22,7 @@ getChineseFirstPinYin = (chinese) ->
 getFirstChinesePinYinSymbol = (ch) ->
   uni = ch.charCodeAt(0)
   if uni > 40869 or uni < 19968
-    return uni
+    return ch
   # 如果是多音字，就返回多音字的编码
   return if multiPinYinCharacter[uni] then multiPinYinCharacter[uni] else strChineseFirstPinYin.charAt(uni - 19968)
 
@@ -45,6 +45,6 @@ arrangePinYin = (arr) ->
 
 # 判断是否含有中文
 isContainsChineseCharacter = (str) ->
-  for char,j in str
-    return true if str.charAt(j) != getFirstChinesePinYinSymbol(str.charAt(j))
+  for char in str
+    return true if char != getFirstChinesePinYinSymbol(char)
   return false

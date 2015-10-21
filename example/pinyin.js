@@ -396,7 +396,7 @@ getFirstChinesePinYinSymbol = function(ch) {
   var uni;
   uni = ch.charCodeAt(0);
   if (uni > 40869 || uni < 19968) {
-    return uni;
+    return ch;
   }
   if (multiPinYinCharacter[uni]) {
     return multiPinYinCharacter[uni];
@@ -433,10 +433,10 @@ arrangePinYin = function(arr) {
 };
 
 isContainsChineseCharacter = function(str) {
-  var char, j, k, len;
-  for (j = k = 0, len = str.length; k < len; j = ++k) {
-    char = str[j];
-    if (str.charAt(j) !== getFirstChinesePinYinSymbol(str.charAt(j))) {
+  var char, k, len;
+  for (k = 0, len = str.length; k < len; k++) {
+    char = str[k];
+    if (char !== getFirstChinesePinYinSymbol(char)) {
       return true;
     }
   }
