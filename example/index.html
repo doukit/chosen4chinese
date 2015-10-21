@@ -4,10 +4,47 @@ file:///Users/aborn/github/chosen4chinese/example/index.html
 
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>example</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="css/chosen.css">
 </head>
 <body>
-hello chosen for chinese
+
+<form method="post" action="/demo/chosen.html" id="chosenForm" class="pure-form pure-form-aligned">
+
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="name">输入：</label>
+            <input id="name" type="text" placeholder="输入input">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="name">城市选择:</label>
+            <select name="city" class="chosen-select" data-placeholder="请选择/搜索城市" id="city" tabindex="5">
+                <option value="" ></option>
+                <option value="北京">北京</option>
+                <option value="1">上海</option>
+                <option value="广州">广州</option>
+                <option value="上123">上123</option>
+                <option value="苏州">苏州</option>
+            </select>
+        </div>
+    </fieldset>
+</form>
+
+<script src="jquery-1.8.2.min.js"></script>
+<script src="base/abstract-chosen.js"></script>
+<script src="base/select-parser.js"></script>
+<script src="chosen.jquery.js"></script>
 <script src="pinyin.js"></script>
+<script type="text/javascript">
+    $('.chosen-select').chosen({
+        no_results_text: "没找到匹配条件!",
+        max_selected_options: 5,
+        disable_search_threshold: 5,      // 少于这个数则不显示搜索框
+        search_contains: true
+    });
+</script>
 </body>
 </html>
