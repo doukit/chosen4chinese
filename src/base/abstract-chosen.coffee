@@ -181,11 +181,16 @@ class AbstractChosen
           results += 1 if option.search_match and not option.group
 
           if option.search_match
+            console.log("****")
             if searchText.length
               startpos = option.search_text.search zregex
+              console.log("startpos:A:" + startpos + ' txt:' + option.search_text)
               if isContainsChineseCharacter(option.search_text) and not(isContainsChineseCharacter zregex.source)
-                # console.log("contains chinese")
-                startpos = getChineseFirstPinYin(option.search_text)[0].search zregex
+                pyArry = getChineseFirstPinYin(option.search_text)
+                for pyI in pyArry
+                  startposTmp = pyI.search zregex
+                  startpos = startposTmp if startposTmp >= 0
+              console.log("startpos:B:" + startpos + ' txt:' + option.search_text)
               text = option.search_text.substr(0, startpos + searchText.length) + '</em>' + option.search_text.substr(startpos + searchText.length)
               option.search_text = text.substr(0, startpos) + '<em>' + text.substr(startpos)
 
@@ -207,9 +212,7 @@ class AbstractChosen
     regex_anchor = if @search_contains then "" else "^"
     new RegExp(regex_anchor + escaped_search_string, 'i')
 
-  search_string_match: (search_string, regex) ->
-    if not(isContainsChineseCharacter regex.source)
-      search_string = getChineseFirstPinYin(search_string)[0]
+  search_string_match_item: (search_string, regex) ->
     if regex.test search_string
       return true
     else if @enable_split_word_search and (search_string.indexOf(" ") >= 0 or search_string.indexOf("[") == 0)
@@ -219,6 +222,15 @@ class AbstractChosen
         for part in parts
           if regex.test part
             return true
+
+  search_string_match: (search_string, regex) ->
+    if not(isContainsChineseCharacter regex.source)  # 如果输入的不含有汉字，则考虑多音字
+      searchMultiArray = getChineseFirstPinYin(search_string)
+      for searchMultiItem in searchMultiArray
+        return true if this.search_string_match_item(searchMultiItem, regex)
+      return false
+    else
+      this.search_string_match_item(search_string, regex);
 
   choices_count: ->
     return @selected_option_count if @selected_option_count?
