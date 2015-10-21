@@ -183,6 +183,9 @@ class AbstractChosen
           if option.search_match
             if searchText.length
               startpos = option.search_text.search zregex
+              if isContainsChineseCharacter(option.search_text) and not(isContainsChineseCharacter zregex.source)
+                # console.log("contains chinese")
+                startpos = getChineseFirstPinYin(option.search_text)[0].search zregex
               text = option.search_text.substr(0, startpos + searchText.length) + '</em>' + option.search_text.substr(startpos + searchText.length)
               option.search_text = text.substr(0, startpos) + '<em>' + text.substr(startpos)
 
@@ -205,6 +208,8 @@ class AbstractChosen
     new RegExp(regex_anchor + escaped_search_string, 'i')
 
   search_string_match: (search_string, regex) ->
+    if not(isContainsChineseCharacter regex.source)
+      search_string = getChineseFirstPinYin(search_string)[0]
     if regex.test search_string
       return true
     else if @enable_split_word_search and (search_string.indexOf(" ") >= 0 or search_string.indexOf("[") == 0)
