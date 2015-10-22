@@ -2,7 +2,7 @@
 chosen4chinese 是在[chosen](https://github.com/harvesthq/chosen)的基础上专门针对中文的改进。
 
 ## 改进点
-1. 增加对中文拼音的搜索，如下例子所示:  
+1. 增加对中文拼音、及拼音多音字的搜索，如下例子所示:  
 ![](doc/image/multipinyin.png "举例")
 
 2. 移动端可配置
