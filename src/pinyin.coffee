@@ -41,7 +41,7 @@ class PinYin
           for tmpI,j in tmp
             tmp[j] = tmpI + chaI
           arrResult = arrResult.concat(tmp)
-    console.log(arrResult)
+    # console.log(arrResult)
     return arrResult
 
 # 判断是否含有中文
