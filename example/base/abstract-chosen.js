@@ -264,10 +264,8 @@ AbstractChosen = (function() {
             results += 1;
           }
           if (option.search_match) {
-            console.log("****");
             if (searchText.length) {
               startpos = option.search_text.search(zregex);
-              console.log("startpos:A:" + startpos + ' txt:' + option.search_text);
               if (isContainsChineseCharacter(option.search_text) && !(isContainsChineseCharacter(zregex.source))) {
                 pyArry = getChineseFirstPinYin(option.search_text);
                 for (j = 0, len1 = pyArry.length; j < len1; j++) {
@@ -278,7 +276,6 @@ AbstractChosen = (function() {
                   }
                 }
               }
-              console.log("startpos:B:" + startpos + ' txt:' + option.search_text);
               text = option.search_text.substr(0, startpos + searchText.length) + '</em>' + option.search_text.substr(startpos + searchText.length);
               option.search_text = text.substr(0, startpos) + '<em>' + text.substr(startpos);
             }
