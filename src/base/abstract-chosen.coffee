@@ -182,16 +182,16 @@ class AbstractChosen
           results += 1 if option.search_match and not option.group
 
           if option.search_match
-            console.log("****")
+            #console.log("****")
             if searchText.length
               startpos = option.search_text.search zregex
-              console.log("startpos:A:" + startpos + ' txt:' + option.search_text)
+              #console.log("startpos:A:" + startpos + ' txt:' + option.search_text)
               if @pinyin.isContainsChineseCharacter(option.search_text) and not(@pinyin.isContainsChineseCharacter zregex.source)
                 pyArry = @pinyin.getChineseFirstPinYin(option.search_text)   # 多音字的处理
                 for pyI in pyArry
                   startposTmp = pyI.search zregex
                   startpos = startposTmp if startposTmp >= 0
-              console.log("startpos:B:" + startpos + ' txt:' + option.search_text)
+              #console.log("startpos:B:" + startpos + ' txt:' + option.search_text)
               text = option.search_text.substr(0, startpos + searchText.length) + '</em>' + option.search_text.substr(startpos + searchText.length)
               option.search_text = text.substr(0, startpos) + '<em>' + text.substr(startpos)
 
