@@ -73,6 +73,14 @@ Version <%= pkg.version %> Build Time <%= grunt.template.date(new Date(), 'yyyy-
   grunt.registerTask 'preBuild', 'some prepare task before build', () ->
     grunt.file.delete("lib/css/chosen.css")
 
-  grunt.registerTask 'default', ['preBuild', 'build']
+  grunt.registerTask 'postBuild', 'some post task after build', () ->
+    content = grunt.file.read("README.md");
+    len = content.length
+    content = content.substring(0, len - 11)
+    date = grunt.template.date(new Date(), 'yyyy-mm-dd');
+
+    grunt.file.write("README.md", content + date)
+
+  grunt.registerTask 'default', ['preBuild', 'build', 'postBuild']
   grunt.registerTask 'build', ['coffee', 'compass','concat', 'uglify', 'cssmin']
   grunt.registerTask 'test',  ['coffee']

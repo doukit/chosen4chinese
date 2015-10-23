@@ -36,4 +36,4 @@ chosen4chinese 是在[chosen](https://github.com/harvesthq/chosen)的基础上�
 2015-10-17
 
 ## 更新日期
-2015-10-22
+2015-10-23
