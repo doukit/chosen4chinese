@@ -79,7 +79,7 @@ Version <%= pkg.version %> Build Time <%= grunt.template.date(new Date(), 'yyyy-
     content = content.substring(0, len - 11)
     date = grunt.template.date(new Date(), 'yyyy-mm-dd');
 
-    grunt.file.write("README.md", content + date)
+    grunt.file.write("README.md", content + "  \n" + date)
 
   grunt.registerTask 'default', ['preBuild', 'build', 'postBuild']
   grunt.registerTask 'build', ['coffee', 'compass','concat', 'uglify', 'cssmin']
