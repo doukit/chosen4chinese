@@ -70,6 +70,9 @@ Version <%= pkg.version %> Build Time <%= grunt.template.date(new Date(), 'yyyy-
         files: ['src/**/*.coffee', 'sass/*.scss']
         tasks: ['build']
 
-  grunt.registerTask 'default', ['build']
+  grunt.registerTask 'preBuild', 'some prepare task before build', () ->
+    grunt.file.delete("lib/css/chosen.css")
+
+  grunt.registerTask 'default', ['preBuild', 'build']
   grunt.registerTask 'build', ['coffee', 'compass','concat', 'uglify', 'cssmin']
   grunt.registerTask 'test',  ['coffee']
