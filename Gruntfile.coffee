@@ -11,7 +11,7 @@ module.exports = (grunt) ->
     comments: """
 /*!
 <%= pkg.name %> 是在chosen https://github.com/harvesthq/chosen 的基础上专门针对中文的改进。
-Version <%= pkg.version %> Build Time <%= grunt.template.date(new Date(), 'yyyy-mm-dd hh:MM:ss')  %>
+Version <%= pkg.version %> Build Time <%= grunt.template.date(new Date(), 'yyyy-mm-dd')  %>
 项目代码 https://github.com/doukit/chosen4chinese
 */
 \n
